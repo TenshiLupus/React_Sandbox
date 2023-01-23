@@ -18,12 +18,26 @@ import i7 from '../assets/i7.jpg';
 
 //state hook used to create a local state in functional component
 //Effect hook, used to perform side effects on functional component after it has rendered into the DOM
+//Semantic elelemtns have a specific purpose or role
+//Implicit returns are done with () and not with {} as if you were declaring a normal function
+
+//State hook: ? 
+//props != component
 
 const images = [i1,i2,i3,i4,i5,i6,i7]
 
+const Loading = () => (
+    <aside>
+        <div className="loading-bar">
+            <label htmlFor="images-loaded" >Loading all images</label>
+            <progress id="images-loaded" max="100" value="50"></progress>
+        </div>
+    </aside>
+);
 
 const App = () => {
-    const [currentImage, setCurrentImage] = useState(0)
+    const [currentImage, setCurrentImage] = useState(0);
+    const [numLoaded, setNumLoaded] = useState(0);
 
     const handleClick = () =>{
         const length = images.length - 1;
@@ -42,22 +56,28 @@ const App = () => {
         console.log(e.target.value)
     }
 
+    const handleImageLoad = () => {
+        setNumLoaded((numLoaded) => numLoaded + 1);
+    }
+
     return (
-    <div className="App"> 
-        <div className="title ">
+    <section> 
+        <header>
             <h1>Zesty</h1>
             <h2>A photography project <br/> by Ella Fieldling</h2>
             
             <button onClick={null}>Click here</button>
 
             <input type="text" name="example" autoComplete="off" onChange={handleChange} />
-        </div>
+        </header>
 
-        <div className="image-container">
-            <img alt="" src={images[currentImage]} onClick={handleClick}/>
-        </div>
+        <figure>
+            <Loading calculatewidth={(numLoaded / images.length) * 100}/>
+            <figcaption>{currentImage + 1} / {images.length}</figcaption>
+            <img alt="" src={images[currentImage]} onClick={handleClick} onLoad={handleImageLoad}/>
+        </figure>
 
-    </div>
+    </section>
     
     
     );
