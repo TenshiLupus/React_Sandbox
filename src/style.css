@@ -49,13 +49,13 @@ h2{
 figcaption{
     font-size: 36px;
     font-weight: normal;
-    position: fixed;
+    position: absolute;
     text-align: center;
     z-index: 1;
     bottom: 0;
     color: #000;
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
     padding: 20px 0;
 }
 
@@ -67,10 +67,19 @@ figure{
 }
 
 img{
-    height: 100vh;
+    height: 100%;
     object-fit: cover;
     position: fixed;
-    width: 50%;
+    width: 100%;
+    opacity: 0;
+}
+
+.display{
+    opacity: 1;
+}
+
+.hide{
+    opacity: 0;
 }
 
 .loading-bar{
@@ -90,4 +99,29 @@ progress[value]::-webkit-progress-bar {
 
 progress[value]::-webkit-progress-value{
     background: #294910;
+}
+
+@media (max-width: 800px){
+    section{
+        flex-direction: column;
+    }
+
+    figure{
+        flex-grow: 1;
+        width: 100vw;
+    }
+
+    figcaption{
+        font-size: 30px;     
+    }
+
+    h2{
+        font-size: 20px;
+        position: relative;
+    }
+
+    h1{
+        font-size: 80px;
+    }
+    
 }
