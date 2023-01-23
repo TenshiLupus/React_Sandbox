@@ -68,8 +68,8 @@ const App = () => {
     return (
         <section> 
         <header>
-            <h1>Zesty</h1>
-            <h2>A photography project <br/> by Ella Fieldling</h2>
+            <h1>Angel Cardenas Martinez</h1>
+            <h2>Testing React project <br/> by Angel CM</h2>
             
         </header>
 
